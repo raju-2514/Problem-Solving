@@ -1,58 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package hackerrank;
+package hackerrank.patttern;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.lang.reflect.Method;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
 
+class Solution{
 
-public class Solution {
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String IP = in.next();
+            System.out.println(IP.matches(new MyRegex().pattern));
+        }
 
-    public static void main(String[] args) {
-       try{
-			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-			int n1=Integer.parseInt(br.readLine());
-			int n2=Integer.parseInt(br.readLine());
-			int n3=Integer.parseInt(br.readLine());
-			int n4=Integer.parseInt(br.readLine());
-			int n5=Integer.parseInt(br.readLine());
-			int n6=Integer.parseInt(br.readLine());
-			Add ob=new Add();
-			ob.add(n1,n2);
-			ob.add(n1,n2,n3);
-			ob.add(n1,n2,n3,n4,n5);	
-			ob.add(n1,n2,n3,n4,n5,n6);
-			Method[] methods=Add.class.getDeclaredMethods();
-			Set<String> set=new HashSet<>();
-			boolean overload=false;
-			for(int i=0;i<methods.length;i++)
-			{
-				if(set.contains(methods[i].getName()))
-				{
-					overload=true;
-					break;
-				}
-				set.add(methods[i].getName());
-				
-			}
-			if(overload)
-			{
-				throw new Exception("Overloading not allowed");
-			}
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
-		
-	
-	
-
+    }
 }
+class MyRegex{
+    // Regular expression pattern for validating an IP address
+    String pattern = "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])\\." +
+            "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])";
+}
+//Write your code here
